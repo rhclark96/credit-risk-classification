@@ -1,27 +1,18 @@
-# Module 12 Report Template
+# Module 20 Report Template
 
 ## Overview of the Analysis
 
-In this section, describe the analysis you completed for the machine learning models used in this Challenge. This might include:
+The anaylsis in this challenge was meant to test how well the created machine learning model could predict whether or not a loan was healthy or high-risk based on the borrower's financial information and the loan size. The financial information included the loan amount, interest rate for said loan, the total amout of debt for the borrower, the borrower's income, the borrower's debt to income ratio, the number of accounts held by the borrower, and the number of derogatory marks against the borrower. All of this information served as the features to train the machine learning to classify the loan status as either healthy or high-risk. This variable then helps lending services determine the creditworthiness of their loan applicants. 
 
-* Explain the purpose of the analysis.
-* Explain what financial information the data was on, and what you needed to predict.
-* Provide basic information about the variables you were trying to predict (e.g., `value_counts`).
-* Describe the stages of the machine learning process you went through as part of this analysis.
-* Briefly touch on any methods you used (e.g., `LogisticRegression`, or any other algorithms).
+In order to build the machine learning model, the initial data set of financial information was split using the 'train_test_split' function into multiple subcategories in both the predictors (financial information) and the variable (loan status). These subcateogries of data allow for the model to learn and be trained from one set of data, while also providing an additiona set of data that the model is unfamiliar with to use for analysis of the model's efficacy in predicting the loan status. From there, the training dataset was used to train the machine learning model using the 'LogisticRegression' function. Then using the second dataset, previously unfamiliar to the machine learning model, the model was used to predict the loan status of these additional datapoints, which was then compared to the actual outcomes. The comparison of the actual outcomes and the predictions from the macine learning model provide insight into the efficacy of the model. 
 
 ## Results
 
-Using bulleted lists, describe the accuracy scores and the precision and recall scores of all machine learning models.
-
-* Machine Learning Model 1:
-    * Description of Model 1 Accuracy, Precision, and Recall scores.
+* Logistic Regression Model :
+    * __Accuracy Score:__ The weighted average accuracy score for this model is 0.99, meaning the model can make accurate predicitons of the loan status 99% of the time given the financial information is provided as input. The weighted accuracy score is appropriate to use in this scenario since the data is not balanced between the two possible outcomes, as there are significantly more 'Healthy Loan' outcomes than 'High-Risk Loan' outcomes.
+    * __Precision Score:__ For the 'Healthy Loans', the precision score is 1.00, meaning the model can acurately predict healthy loans as being healthy loans 100% of the time and there is a low rate of false positives in this case. However, for the 'High-Risk Loans', the precision score is 0.87, meaning that there are more false positives for this outcome, and more loans will be flagged as high-risk when it may actually be a healthy loan.
+    * __Recall Score:__ For the 'Healthy Loans', the recall score is 1.00, meaning the model can acurately predict a healthy loan as being healthy 100% of the time even when considering false positives and false negatives. However, the recall socre for the 'High-Risk Loans' is 0.95, meaning there are possibilities for false positives for this outcome when considering all of the predicted outcomes. This means that there is more of a possibility for loans to be flagged as 'igh-risk' when it may actually be a healthy loan. 
 
 ## Summary
 
-Summarize the results of the machine learning models, and include a recommendation on the model to use, if any. For example:
-
-* Which one seems to perform best? How do you know it performs best?
-* Does performance depend on the problem we are trying to solve? (For example, is it more important to predict the `1`'s, or predict the `0`'s? )
-
-If you do not recommend any of the models, please justify your reasoning.
+Overall, this model can be used quite accurately to predict the loan outcome for a borrow when using their pertinent financial information as input. Healthy loans are always identified as such, and high-risk loans are often identified correctly. With this reccomendation for use of this model to predict loan outcomes, there are two reccomendations: train the model again using more data from hish-rosk loans, and/or have loans that are identified as 'high-risk' by the model be reviewed by a lendikng expert to ensure that the model did not produce a false-positive. 
